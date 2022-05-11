@@ -16,4 +16,9 @@ export class DeviceService {
   get(): Observable<Device[]> {
     return this.http.get<Device[]>(`${environment.apiUrl}device`);
   }
+
+  setThresholds(id: number, hiVal: number, loVal: number){
+    const body = { hiVal: hiVal, loVal: loVal };
+    return this.http.put<any>(`${environment.apiUrl}device/${id}`, body);
+  }
 }

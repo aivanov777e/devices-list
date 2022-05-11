@@ -47,8 +47,9 @@ namespace WebApplication1.Controllers
 
         // PUT api/<DeviceController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task Put(int id, [FromBody] DeviceRequest deviceRequest)
         {
+            await deviceService.SetThresholds(id, deviceRequest.hiVal, deviceRequest.loVal);
         }
 
         // DELETE api/<DeviceController>/5

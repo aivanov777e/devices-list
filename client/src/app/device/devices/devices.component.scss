@@ -1,4 +1,14 @@
 .devices {
+  &__button-show {
+    margin-bottom: 24px;
+  }
+  &__form {
+    display: flex;
+    margin-bottom: 24px;
+  }
+  &__form-control {
+    padding-right: 24px;
+  }
   &__table {
     border-spacing: 0;
     th {
@@ -16,3 +26,6 @@
     }
   }
 }
+
+input.ng-touched.ng-invalid {border:solid red 2px;}
+input.ng-touched.ng-valid {border:solid green 2px;}

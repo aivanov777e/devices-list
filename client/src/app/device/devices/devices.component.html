@@ -1,6 +1,31 @@
 <div class="devices">
   <h2 class="devices__title">Список устройств</h2>
 
+  <button class="devices__button-show" *ngIf="!showForm" (click)="showForm=true">Изменить порог</button>
+  <form class="devices__form" *ngIf="showForm" [formGroup]="deviceGroup" novalidate (ngSubmit)="submit()">
+    <div class="devices__form-control">
+      <label>Id device:</label>
+      <input formControlName="id">
+      <div class="alert alert-danger"
+        *ngIf="deviceGroup.controls['id'].invalid && deviceGroup.controls['id'].touched">
+          Не указано Id устройства
+      </div>
+    </div>
+    <div class="devices__form-control">
+      <label>HiVal:</label>
+      <input formControlName="hiVal">
+    </div>
+    <div class="devices__form-control">
+      <label>LoVal:</label>
+      <input formControlName="loVal">
+    </div>
+    <div>
+      <button [disabled]="deviceGroup.invalid">
+          Отправить
+      </button>
+    </div>
+  </form>
+
   <table class="devices__table">
     <tr class="devices__row">
       <th>Id device</th>
@@ -15,19 +40,9 @@
       <td class="devices__parameter" [class.devices__parameter--threshold]="!item.parameter2Correct">
         {{item.parameter2}}
       </td>
-      <td>{{item.parameter2ThresholdLo}}</td>
       <td>{{item.parameter2ThresholdHi}}</td>
+      <td>{{item.parameter2ThresholdLo}}</td>
     </tr>
   </table>
 
-  <!-- <form [formGroup]="deviceGroup">
-    <div>
-      <label>Id device:</label>
-      <input formControlName="id">
-      <div class="alert alert-danger"
-        *ngIf="deviceGroup.controls['id'].invalid && deviceGroup.controls['id'].touched">
-          Не указано имя
-      </div>
-    </div>
-  </form> -->
 </div>
