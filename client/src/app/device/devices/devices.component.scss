@@ -1,0 +1,18 @@
+.devices {
+  &__table {
+    border-spacing: 0;
+    th {
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      padding: 8px 16px;
+    }
+    td {
+      padding: 8px 16px;
+    }
+  }
+  &__parameter {
+    &--threshold {
+      color: red;
+    }
+  }
+}

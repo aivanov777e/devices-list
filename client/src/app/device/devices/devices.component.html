@@ -1,0 +1,33 @@
+<div class="devices">
+  <h2 class="devices__title">Список устройств</h2>
+
+  <table class="devices__table">
+    <tr class="devices__row">
+      <th>Id device</th>
+      <th>Parameter1</th>
+      <th>Parameter2</th>
+      <th>Parameter2 Threshold Hi</th>
+      <th>Parameter2 Threshold Lo</th>
+    </tr>
+    <tr *ngFor="let item of devices$ | async">
+      <td>{{item.id}}</td>
+      <td>{{item.parameter1}}</td>
+      <td class="devices__parameter" [class.devices__parameter--threshold]="!item.parameter2Correct">
+        {{item.parameter2}}
+      </td>
+      <td>{{item.parameter2ThresholdLo}}</td>
+      <td>{{item.parameter2ThresholdHi}}</td>
+    </tr>
+  </table>
+
+  <!-- <form [formGroup]="deviceGroup">
+    <div>
+      <label>Id device:</label>
+      <input formControlName="id">
+      <div class="alert alert-danger"
+        *ngIf="deviceGroup.controls['id'].invalid && deviceGroup.controls['id'].touched">
+          Не указано имя
+      </div>
+    </div>
+  </form> -->
+</div>
